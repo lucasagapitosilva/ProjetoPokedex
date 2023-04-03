@@ -122,4 +122,16 @@
     padding: 10px;
     color: #FCFCFC;
     font-size: 1em;
+    cursor: pointer;
+}
+
+.loading {
+    font-size: 2em;
+    color: #FFF;
+    font-weight: bold;
+    font-style: italic;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    letter-spacing: 0.2em;
 }
