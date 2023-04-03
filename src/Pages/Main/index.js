@@ -24,10 +24,40 @@ export default function Main() {
             <img />
             <span>Charizard</span>
           </div>
+          <div className='card'>
+            <p>nº001</p>
+            <img />
+            <span>Charizard</span>
+          </div>
+          <div className='card'>
+            <p>nº001</p>
+            <img />
+            <span>Charizard</span>
+          </div>
+          <div className='card'>
+            <p>nº001</p>
+            <img />
+            <span>Charizard</span>
+          </div>
+          <div className='card'>
+            <p>nº001</p>
+            <img />
+            <span>Charizard</span>
+          </div>
+          <div className='card'>
+            <p>nº001</p>
+            <img />
+            <span>Charizard</span>
+          </div>
         </div>
 
-        <span>Desenvolvedor - Lucas Agapito</span>
       </div>
+
+      <div className='btns'>
+        <button type='button' onClick={() =>{}}>Voltar</button>
+        <button type='button' onClick={() =>{}}>Avançar</button>
+      </div>
+      <span className='dev'>Desenvolvedor - Lucas Agapito</span>
     </div>
   );
 }
