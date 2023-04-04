@@ -1,0 +1,128 @@
+.container-topo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.logoArrow {
+    border: 1px solid #5E3B9D;
+    box-shadow: 1px 1px 2px 2px #281A45;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 10px;
+    color: #FCFCFC;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.container-search-details {
+    max-width: 460px;
+    width: 100%;
+    height: 69px;
+    background-color: #271841;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-search-details div form {
+    background-color: #22163A;
+    border-radius: 8px;
+    width: 410px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-search-details div input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1em;
+    outline: none;
+    text-align: center;
+}
+
+.container-search-details div button {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    padding: 3px 0 0 3px;
+    cursor: pointer;
+}
+
+
+
+.container-cards-details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-cards-details img {
+    width: 351px;
+    height: 541px;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 3px rgba(94,59,157, 0.7));
+    transition: all 0.7s;
+}
+
+.container-cards-details img:hover {
+    transform: scale(1.07);
+}
+
+.info-poke {
+    display: flex;
+    flex-direction: column;
+    width: 580px;
+    height: 544px;
+    margin: 0 auto;
+}
+
+.info-article {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.info-article p {
+    color: #fcfcfc;
+}
+
+.info-article span {
+    margin: 0 auto;
+    background-color: #fcfcfc;
+    padding: 3px 5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+
+.info-article2 {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-article2 h2 {
+    color: #FCFCFC;
+    font-size: 2.4em;
+    padding-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.info-article2 p {
+    color: #FCFCFC;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    line-height: 150%;
+    padding-top: 10px;
+}

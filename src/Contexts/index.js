@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import api from '../Services/api';
 
@@ -19,6 +19,7 @@ export default function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(0)
     const [pokeIndex, setPokeIndex] = useState();
+    const [updatePokemon, setUpdatePokemon] = useState();
 
     useEffect(() => {
         async function loadApi() {
@@ -50,15 +51,30 @@ export default function AuthProvider({ children }) {
     }
 
 
+    function handlePokemonDetails(e) {
+        e.preventDefault();
+    }
+
+
+    function handlePrevPage() {
+        navigate('/')
+        setPage(0);
+    }
+
+
+
     return (
         <AuthContext.Provider
             value={{
                 handlePage,
                 pokeData,
                 loading,
+                setLoading,
                 handleNextClick,
                 handlePrevClick,
                 pokeIndex,
+                handlePokemonDetails,
+                handlePrevPage,
             }}
         >
             {children}

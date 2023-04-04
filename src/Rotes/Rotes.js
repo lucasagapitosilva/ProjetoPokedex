@@ -7,7 +7,7 @@ export default function Rotes() {
     return (
         <Routes>
             <Route exact path='/' element={<Main />} />
-            <Route exact path='/details' element={<Details />} />
+            <Route exact path='/details/:id' element={<Details />} />
         </Routes>
     )
 }

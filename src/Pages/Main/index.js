@@ -1,5 +1,6 @@
 import './style.css';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../Contexts';
 import { FaSearch } from 'react-icons/fa';
@@ -7,24 +8,23 @@ import { FaSearch } from 'react-icons/fa';
 
 export default function Main() {
 
-  const { loading, pokeData, page, handleNextClick, handlePrevClick, pokeIndex } = useContext(AuthContext);
+  const { loading, pokeData, handleNextClick, handlePrevClick, pokeIndex, handlePokemonDetails } = useContext(AuthContext);
 
   if (loading) {
     return <p className='loading'>Loading...</p>
   }
 
-
   return (
     <div className='container-geral'>
       <div className='container-search'>
         <div>
-          <button type='submit'><FaSearch size={25} /></button>
-          <input
-            type='text'
-            placeholder='search'
-            value='search'
-            onChange={() => { }}
-          />
+          <form onSubmit={handlePokemonDetails}>
+            <button type='submit'><FaSearch size={25} /></button>
+            <input
+              type='text'
+              placeholder='search'
+            />
+          </form>
         </div>
       </div>
       <div className='container'>
@@ -33,10 +33,12 @@ export default function Main() {
           {pokeData.map((pokemon, index) => {
             const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.url.split('/')[6]}.svg`;
             return (
-              <div key={pokemon.name} className='card'>
-                <p>{pokeIndex + index + 1 < 10 ? `nº00${pokeIndex + index + 1}` : `nº0${pokeIndex + index + 1}`}</p>
-                <img src={url} alt={pokemon.name} />
-                <span>{pokemon.name}</span>
+              <div key={pokemon.id} className='card'>
+                <Link to={`/details/${index + 1}`}>
+                  <p>{pokeIndex + index + 1 < 10 ? `nº00${pokeIndex + index + 1}` : `nº0${pokeIndex + index + 1}`}</p>
+                  <img src={url} alt={pokemon.name} />
+                  <span>{pokemon.name}</span>
+                </Link>
               </div>
             )
           })}
@@ -45,7 +47,7 @@ export default function Main() {
       </div>
 
       <div className='btns'>
-        {page <= 0 ? (
+        {pokeIndex <= 0 ? (
           <button type="button" onClick={handleNextClick}>
             Avançar
           </button>
