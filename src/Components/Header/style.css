@@ -9,6 +9,7 @@ header {
 .logo {
     position: absolute;
     left: 40px;
+    cursor: pointer;
 }
 
 .topo {

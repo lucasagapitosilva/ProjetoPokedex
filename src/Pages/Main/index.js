@@ -1,51 +1,13 @@
 import './style.css';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
+import { AuthContext } from '../../Contexts';
 import { FaSearch } from 'react-icons/fa';
-import api from '../../Services/api';
 
 
 export default function Main() {
 
-  const navigate = useNavigate();
-
-  const [pokeData, setPokeData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0)
-
-  useEffect(() => {
-    async function loadApi() {
-      setLoading(true)
-      const offset = page * 6;
-      const response = await api.get(`pokemon?limit=6&offset=${offset}`)
-
-      const PokemonInfo = response.data.results
-
-      setPokeData(PokemonInfo);
-      setLoading(false)
-      console.log(PokemonInfo)
-
-    }
-
-    loadApi();
-  }, [page])
-
-
-  function handleNextClick() {
-    setPage(page + 1);
-  }
-
-  function handlePrevClick() {
-    if (page > 0) {
-      setPage(page - 1);
-    }
-  }
-
-  function handleTitleClick(){
-    navigate('/')
-  }
-
+  const { loading, pokeData, page, handleNextClick, handlePrevClick, pokeIndex } = useContext(AuthContext);
 
   if (loading) {
     return <p className='loading'>Loading...</p>
@@ -72,7 +34,7 @@ export default function Main() {
             const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.url.split('/')[6]}.svg`;
             return (
               <div key={pokemon.name} className='card'>
-                <p>{page * 6 + index + 1 < 10 ? `nº00${page * 6 + index + 1}` : `nº0${page * 6 + index + 1}`}</p>
+                <p>{pokeIndex + index + 1 < 10 ? `nº00${pokeIndex + index + 1}` : `nº0${pokeIndex + index + 1}`}</p>
                 <img src={url} alt={pokemon.name} />
                 <span>{pokemon.name}</span>
               </div>
