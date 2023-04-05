@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import api from '../Services/api';
 
@@ -9,17 +9,10 @@ export default function AuthProvider({ children }) {
 
     const navigate = useNavigate();
 
-    function handlePage() {
-        navigate('/')
-        setPage(0)
-    }
-
-
-    const [pokeData, setPokeData] = useState(null);
+    const [pokeData, setPokeData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(0)
     const [pokeIndex, setPokeIndex] = useState();
-    const [updatePokemon, setUpdatePokemon] = useState();
 
     useEffect(() => {
         async function loadApi() {
@@ -33,7 +26,6 @@ export default function AuthProvider({ children }) {
             setPokeIndex(offset)
             setPokeData(PokemonInfo);
             setLoading(false)
-            console.log(pokeIndex)
         }
 
         loadApi();
@@ -42,17 +34,37 @@ export default function AuthProvider({ children }) {
 
     function handleNextClick() {
         setPage(page + 1);
+        setPokeData([])
     }
 
     function handlePrevClick() {
         if (page > 0) {
             setPage(page - 1);
         }
+        setPokeData([])
+    }
+
+    function handlePage() {
+        navigate('/')
+        setPage(0)
     }
 
 
-    function handlePokemonDetails(e) {
-        e.preventDefault();
+    const handlePokemonDetails = async (event, searchTerm) => {
+        event.preventDefault();
+
+        if(!searchTerm){
+            return;
+        }
+
+        try{
+            const response = await api.get(`pokemon/${searchTerm}`);
+            const pokemon = response.data;
+            navigate(`/details/${pokemon.id}`)
+        } catch(error) {
+            console.log(error);
+        }
+        
     }
 
 
